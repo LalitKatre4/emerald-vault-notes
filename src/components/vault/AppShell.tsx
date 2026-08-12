@@ -63,10 +63,11 @@ export function AppShell({
         <Link
           to="/note/new"
           aria-label="New note"
-          className="fixed bottom-24 left-1/2 z-40 -translate-x-1/2 rounded-full bg-primary p-4 text-primary-foreground shadow-[var(--shadow-glow)] transition-transform active:scale-95 sm:left-auto sm:right-[max(1rem,calc(50%-16rem))] sm:translate-x-0"
+          className="fixed bottom-24 right-[max(1rem,calc(50%-15rem))] z-40 rounded-full bg-primary p-4 text-primary-foreground shadow-[var(--shadow-glow)] transition-transform active:scale-95"
         >
           <Plus className="h-6 w-6" />
         </Link>
+
       )}
       {showNav && <BottomNavigation />}
     </div>
