@@ -10,33 +10,141 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as CategoriesRouteImport } from './routes/categories'
+import { Route as FavoritesRouteImport } from './routes/favorites'
+import { Route as HomeRouteImport } from './routes/home'
+import { Route as LockRouteImport } from './routes/lock'
+import { Route as NotesRouteImport } from './routes/notes'
+import { Route as SearchRouteImport } from './routes/search'
+import { Route as SetupRouteImport } from './routes/setup'
+import { Route as TrashRouteImport } from './routes/trash'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CategoriesRoute = CategoriesRouteImport.update({
+  id: '/categories',
+  path: '/categories',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FavoritesRoute = FavoritesRouteImport.update({
+  id: '/favorites',
+  path: '/favorites',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HomeRoute = HomeRouteImport.update({
+  id: '/home',
+  path: '/home',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LockRoute = LockRouteImport.update({
+  id: '/lock',
+  path: '/lock',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NotesRoute = NotesRouteImport.update({
+  id: '/notes',
+  path: '/notes',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SearchRoute = SearchRouteImport.update({
+  id: '/search',
+  path: '/search',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SetupRoute = SetupRouteImport.update({
+  id: '/setup',
+  path: '/setup',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TrashRoute = TrashRouteImport.update({
+  id: '/trash',
+  path: '/trash',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/categories': typeof CategoriesRoute
+  '/favorites': typeof FavoritesRoute
+  '/home': typeof HomeRoute
+  '/lock': typeof LockRoute
+  '/notes': typeof NotesRoute
+  '/search': typeof SearchRoute
+  '/setup': typeof SetupRoute
+  '/trash': typeof TrashRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/categories': typeof CategoriesRoute
+  '/favorites': typeof FavoritesRoute
+  '/home': typeof HomeRoute
+  '/lock': typeof LockRoute
+  '/notes': typeof NotesRoute
+  '/search': typeof SearchRoute
+  '/setup': typeof SetupRoute
+  '/trash': typeof TrashRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/categories': typeof CategoriesRoute
+  '/favorites': typeof FavoritesRoute
+  '/home': typeof HomeRoute
+  '/lock': typeof LockRoute
+  '/notes': typeof NotesRoute
+  '/search': typeof SearchRoute
+  '/setup': typeof SetupRoute
+  '/trash': typeof TrashRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/categories'
+    | '/favorites'
+    | '/home'
+    | '/lock'
+    | '/notes'
+    | '/search'
+    | '/setup'
+    | '/trash'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/categories'
+    | '/favorites'
+    | '/home'
+    | '/lock'
+    | '/notes'
+    | '/search'
+    | '/setup'
+    | '/trash'
+  id:
+    | '__root__'
+    | '/'
+    | '/categories'
+    | '/favorites'
+    | '/home'
+    | '/lock'
+    | '/notes'
+    | '/search'
+    | '/setup'
+    | '/trash'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  CategoriesRoute: typeof CategoriesRoute
+  FavoritesRoute: typeof FavoritesRoute
+  HomeRoute: typeof HomeRoute
+  LockRoute: typeof LockRoute
+  NotesRoute: typeof NotesRoute
+  SearchRoute: typeof SearchRoute
+  SetupRoute: typeof SetupRoute
+  TrashRoute: typeof TrashRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +156,75 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/categories': {
+      id: '/categories'
+      path: '/categories'
+      fullPath: '/categories'
+      preLoaderRoute: typeof CategoriesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/favorites': {
+      id: '/favorites'
+      path: '/favorites'
+      fullPath: '/favorites'
+      preLoaderRoute: typeof FavoritesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/home': {
+      id: '/home'
+      path: '/home'
+      fullPath: '/home'
+      preLoaderRoute: typeof HomeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/lock': {
+      id: '/lock'
+      path: '/lock'
+      fullPath: '/lock'
+      preLoaderRoute: typeof LockRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/notes': {
+      id: '/notes'
+      path: '/notes'
+      fullPath: '/notes'
+      preLoaderRoute: typeof NotesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/search': {
+      id: '/search'
+      path: '/search'
+      fullPath: '/search'
+      preLoaderRoute: typeof SearchRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/setup': {
+      id: '/setup'
+      path: '/setup'
+      fullPath: '/setup'
+      preLoaderRoute: typeof SetupRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/trash': {
+      id: '/trash'
+      path: '/trash'
+      fullPath: '/trash'
+      preLoaderRoute: typeof TrashRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  CategoriesRoute: CategoriesRoute,
+  FavoritesRoute: FavoritesRoute,
+  HomeRoute: HomeRoute,
+  LockRoute: LockRoute,
+  NotesRoute: NotesRoute,
+  SearchRoute: SearchRoute,
+  SetupRoute: SetupRoute,
+  TrashRoute: TrashRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
