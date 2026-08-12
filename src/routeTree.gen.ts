@@ -10,12 +10,18 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as BackupRouteImport } from './routes/backup'
+import { Route as BiometricRouteImport } from './routes/biometric'
 import { Route as CategoriesRouteImport } from './routes/categories'
+import { Route as ChangePinRouteImport } from './routes/change-pin'
 import { Route as FavoritesRouteImport } from './routes/favorites'
 import { Route as HomeRouteImport } from './routes/home'
 import { Route as LockRouteImport } from './routes/lock'
 import { Route as NotesRouteImport } from './routes/notes'
+import { Route as PremiumRouteImport } from './routes/premium'
 import { Route as SearchRouteImport } from './routes/search'
+import { Route as SecurityRouteImport } from './routes/security'
+import { Route as SettingsRouteImport } from './routes/settings'
 import { Route as SetupRouteImport } from './routes/setup'
 import { Route as TrashRouteImport } from './routes/trash'
 import { Route as NoteIdRouteImport } from './routes/note.$id'
@@ -27,9 +33,24 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const BackupRoute = BackupRouteImport.update({
+  id: '/backup',
+  path: '/backup',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BiometricRoute = BiometricRouteImport.update({
+  id: '/biometric',
+  path: '/biometric',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const CategoriesRoute = CategoriesRouteImport.update({
   id: '/categories',
   path: '/categories',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ChangePinRoute = ChangePinRouteImport.update({
+  id: '/change-pin',
+  path: '/change-pin',
   getParentRoute: () => rootRouteImport,
 } as any)
 const FavoritesRoute = FavoritesRouteImport.update({
@@ -52,9 +73,24 @@ const NotesRoute = NotesRouteImport.update({
   path: '/notes',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PremiumRoute = PremiumRouteImport.update({
+  id: '/premium',
+  path: '/premium',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SearchRoute = SearchRouteImport.update({
   id: '/search',
   path: '/search',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SecurityRoute = SecurityRouteImport.update({
+  id: '/security',
+  path: '/security',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SettingsRoute = SettingsRouteImport.update({
+  id: '/settings',
+  path: '/settings',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SetupRoute = SetupRouteImport.update({
@@ -85,12 +121,18 @@ const NoteIdEditRoute = NoteIdEditRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/backup': typeof BackupRoute
+  '/biometric': typeof BiometricRoute
   '/categories': typeof CategoriesRoute
+  '/change-pin': typeof ChangePinRoute
   '/favorites': typeof FavoritesRoute
   '/home': typeof HomeRoute
   '/lock': typeof LockRoute
   '/notes': typeof NotesRoute
+  '/premium': typeof PremiumRoute
   '/search': typeof SearchRoute
+  '/security': typeof SecurityRoute
+  '/settings': typeof SettingsRoute
   '/setup': typeof SetupRoute
   '/trash': typeof TrashRoute
   '/note/$id': typeof NoteIdRouteWithChildren
@@ -99,12 +141,18 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/backup': typeof BackupRoute
+  '/biometric': typeof BiometricRoute
   '/categories': typeof CategoriesRoute
+  '/change-pin': typeof ChangePinRoute
   '/favorites': typeof FavoritesRoute
   '/home': typeof HomeRoute
   '/lock': typeof LockRoute
   '/notes': typeof NotesRoute
+  '/premium': typeof PremiumRoute
   '/search': typeof SearchRoute
+  '/security': typeof SecurityRoute
+  '/settings': typeof SettingsRoute
   '/setup': typeof SetupRoute
   '/trash': typeof TrashRoute
   '/note/$id': typeof NoteIdRouteWithChildren
@@ -114,12 +162,18 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/backup': typeof BackupRoute
+  '/biometric': typeof BiometricRoute
   '/categories': typeof CategoriesRoute
+  '/change-pin': typeof ChangePinRoute
   '/favorites': typeof FavoritesRoute
   '/home': typeof HomeRoute
   '/lock': typeof LockRoute
   '/notes': typeof NotesRoute
+  '/premium': typeof PremiumRoute
   '/search': typeof SearchRoute
+  '/security': typeof SecurityRoute
+  '/settings': typeof SettingsRoute
   '/setup': typeof SetupRoute
   '/trash': typeof TrashRoute
   '/note/$id': typeof NoteIdRouteWithChildren
@@ -130,12 +184,18 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/backup'
+    | '/biometric'
     | '/categories'
+    | '/change-pin'
     | '/favorites'
     | '/home'
     | '/lock'
     | '/notes'
+    | '/premium'
     | '/search'
+    | '/security'
+    | '/settings'
     | '/setup'
     | '/trash'
     | '/note/$id'
@@ -144,12 +204,18 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/backup'
+    | '/biometric'
     | '/categories'
+    | '/change-pin'
     | '/favorites'
     | '/home'
     | '/lock'
     | '/notes'
+    | '/premium'
     | '/search'
+    | '/security'
+    | '/settings'
     | '/setup'
     | '/trash'
     | '/note/$id'
@@ -158,12 +224,18 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/backup'
+    | '/biometric'
     | '/categories'
+    | '/change-pin'
     | '/favorites'
     | '/home'
     | '/lock'
     | '/notes'
+    | '/premium'
     | '/search'
+    | '/security'
+    | '/settings'
     | '/setup'
     | '/trash'
     | '/note/$id'
@@ -173,12 +245,18 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  BackupRoute: typeof BackupRoute
+  BiometricRoute: typeof BiometricRoute
   CategoriesRoute: typeof CategoriesRoute
+  ChangePinRoute: typeof ChangePinRoute
   FavoritesRoute: typeof FavoritesRoute
   HomeRoute: typeof HomeRoute
   LockRoute: typeof LockRoute
   NotesRoute: typeof NotesRoute
+  PremiumRoute: typeof PremiumRoute
   SearchRoute: typeof SearchRoute
+  SecurityRoute: typeof SecurityRoute
+  SettingsRoute: typeof SettingsRoute
   SetupRoute: typeof SetupRoute
   TrashRoute: typeof TrashRoute
   NoteIdRoute: typeof NoteIdRouteWithChildren
@@ -194,11 +272,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/backup': {
+      id: '/backup'
+      path: '/backup'
+      fullPath: '/backup'
+      preLoaderRoute: typeof BackupRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/biometric': {
+      id: '/biometric'
+      path: '/biometric'
+      fullPath: '/biometric'
+      preLoaderRoute: typeof BiometricRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/categories': {
       id: '/categories'
       path: '/categories'
       fullPath: '/categories'
       preLoaderRoute: typeof CategoriesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/change-pin': {
+      id: '/change-pin'
+      path: '/change-pin'
+      fullPath: '/change-pin'
+      preLoaderRoute: typeof ChangePinRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/favorites': {
@@ -229,11 +328,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof NotesRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/premium': {
+      id: '/premium'
+      path: '/premium'
+      fullPath: '/premium'
+      preLoaderRoute: typeof PremiumRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/search': {
       id: '/search'
       path: '/search'
       fullPath: '/search'
       preLoaderRoute: typeof SearchRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/security': {
+      id: '/security'
+      path: '/security'
+      fullPath: '/security'
+      preLoaderRoute: typeof SecurityRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/settings': {
+      id: '/settings'
+      path: '/settings'
+      fullPath: '/settings'
+      preLoaderRoute: typeof SettingsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/setup': {
@@ -287,12 +407,18 @@ const NoteIdRouteWithChildren =
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  BackupRoute: BackupRoute,
+  BiometricRoute: BiometricRoute,
   CategoriesRoute: CategoriesRoute,
+  ChangePinRoute: ChangePinRoute,
   FavoritesRoute: FavoritesRoute,
   HomeRoute: HomeRoute,
   LockRoute: LockRoute,
   NotesRoute: NotesRoute,
+  PremiumRoute: PremiumRoute,
   SearchRoute: SearchRoute,
+  SecurityRoute: SecurityRoute,
+  SettingsRoute: SettingsRoute,
   SetupRoute: SetupRoute,
   TrashRoute: TrashRoute,
   NoteIdRoute: NoteIdRouteWithChildren,
