@@ -18,6 +18,9 @@ import { Route as NotesRouteImport } from './routes/notes'
 import { Route as SearchRouteImport } from './routes/search'
 import { Route as SetupRouteImport } from './routes/setup'
 import { Route as TrashRouteImport } from './routes/trash'
+import { Route as NoteIdRouteImport } from './routes/note.$id'
+import { Route as NoteNewRouteImport } from './routes/note.new'
+import { Route as NoteIdEditRouteImport } from './routes/note.$id.edit'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -64,6 +67,21 @@ const TrashRoute = TrashRouteImport.update({
   path: '/trash',
   getParentRoute: () => rootRouteImport,
 } as any)
+const NoteIdRoute = NoteIdRouteImport.update({
+  id: '/note/$id',
+  path: '/note/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NoteNewRoute = NoteNewRouteImport.update({
+  id: '/note/new',
+  path: '/note/new',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NoteIdEditRoute = NoteIdEditRouteImport.update({
+  id: '/edit',
+  path: '/edit',
+  getParentRoute: () => NoteIdRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -75,6 +93,9 @@ export interface FileRoutesByFullPath {
   '/search': typeof SearchRoute
   '/setup': typeof SetupRoute
   '/trash': typeof TrashRoute
+  '/note/$id': typeof NoteIdRouteWithChildren
+  '/note/new': typeof NoteNewRoute
+  '/note/$id/edit': typeof NoteIdEditRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -86,6 +107,9 @@ export interface FileRoutesByTo {
   '/search': typeof SearchRoute
   '/setup': typeof SetupRoute
   '/trash': typeof TrashRoute
+  '/note/$id': typeof NoteIdRouteWithChildren
+  '/note/new': typeof NoteNewRoute
+  '/note/$id/edit': typeof NoteIdEditRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -98,6 +122,9 @@ export interface FileRoutesById {
   '/search': typeof SearchRoute
   '/setup': typeof SetupRoute
   '/trash': typeof TrashRoute
+  '/note/$id': typeof NoteIdRouteWithChildren
+  '/note/new': typeof NoteNewRoute
+  '/note/$id/edit': typeof NoteIdEditRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -111,6 +138,9 @@ export interface FileRouteTypes {
     | '/search'
     | '/setup'
     | '/trash'
+    | '/note/$id'
+    | '/note/new'
+    | '/note/$id/edit'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -122,6 +152,9 @@ export interface FileRouteTypes {
     | '/search'
     | '/setup'
     | '/trash'
+    | '/note/$id'
+    | '/note/new'
+    | '/note/$id/edit'
   id:
     | '__root__'
     | '/'
@@ -133,6 +166,9 @@ export interface FileRouteTypes {
     | '/search'
     | '/setup'
     | '/trash'
+    | '/note/$id'
+    | '/note/new'
+    | '/note/$id/edit'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -145,6 +181,8 @@ export interface RootRouteChildren {
   SearchRoute: typeof SearchRoute
   SetupRoute: typeof SetupRoute
   TrashRoute: typeof TrashRoute
+  NoteIdRoute: typeof NoteIdRouteWithChildren
+  NoteNewRoute: typeof NoteNewRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -212,8 +250,40 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TrashRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/note/$id': {
+      id: '/note/$id'
+      path: '/note/$id'
+      fullPath: '/note/$id'
+      preLoaderRoute: typeof NoteIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/note/new': {
+      id: '/note/new'
+      path: '/note/new'
+      fullPath: '/note/new'
+      preLoaderRoute: typeof NoteNewRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/note/$id/edit': {
+      id: '/note/$id/edit'
+      path: '/edit'
+      fullPath: '/note/$id/edit'
+      preLoaderRoute: typeof NoteIdEditRouteImport
+      parentRoute: typeof NoteIdRoute
+    }
   }
 }
+
+interface NoteIdRouteChildren {
+  NoteIdEditRoute: typeof NoteIdEditRoute
+}
+
+const NoteIdRouteChildren: NoteIdRouteChildren = {
+  NoteIdEditRoute: NoteIdEditRoute,
+}
+
+const NoteIdRouteWithChildren =
+  NoteIdRoute._addFileChildren(NoteIdRouteChildren)
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
@@ -225,6 +295,8 @@ const rootRouteChildren: RootRouteChildren = {
   SearchRoute: SearchRoute,
   SetupRoute: SetupRoute,
   TrashRoute: TrashRoute,
+  NoteIdRoute: NoteIdRouteWithChildren,
+  NoteNewRoute: NoteNewRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
